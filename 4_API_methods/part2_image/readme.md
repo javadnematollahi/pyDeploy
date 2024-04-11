@@ -28,7 +28,10 @@ in Value part chose an image from your system to send.
 
 input:
 
+![bicycle](https://github.com/javadnematollahi/pyDeploy/assets/86910174/29cf68b8-9402-414f-af52-3d07dbfab096)
 
 
 output:
+
+![newbi](https://github.com/javadnematollahi/pyDeploy/assets/86910174/02cff249-4c08-4ee8-977e-0fca22660a80)
 
