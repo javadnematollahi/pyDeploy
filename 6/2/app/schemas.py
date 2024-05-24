@@ -11,7 +11,7 @@ class Course(CourseBase):
     owner_id: int
 
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 
 class StudentBase(BaseModel):
@@ -27,4 +27,4 @@ class Student(StudentBase):
     courses: list[Course] = []
 
     class Config:
-        orm_mode = True
+        from_attributes = True

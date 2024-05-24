@@ -67,10 +67,43 @@ def delete_course(db: Session, db_course):
     db.delete(db_course)
     db.commit()
 
-def add_course_to_student(db: Session, student_id: int, course_id: int): # TODO: need fix
-    student = db.query(models.Student).get(student_id)
-    course = db.query(models.Course).get(course_id)
+def add_course_to_student(db: Session, student_id: int, course_id: int):
+    student = db.query(models.Student).filter(models.Student.id==student_id).first()
+    course = db.query(models.Course).filter(models.Course.id==course_id).first()
     
     student.courses.append(course)
+    db.commit()
+
+def add_student_to_courses(db: Session, student_id: int, course_id: int):
+    student = db.query(models.Student).filter(models.Student.id==student_id).first()
+    course = db.query(models.Course).filter(models.Course.id==course_id).first()
+    
     course.students.append(student)
+    db.commit()
+
+def get_courses_of_student(db: Session, student_id: int):
+    s1 = db.query(models.Student).filter(models.Student.id==student_id).first()
+    courses=[]
+    for course in s1.courses:
+        courses.append(course.name)
+    return courses
+
+def get_students_of_course(db: Session, course_id: int):
+    s1 = db.query(models.Course).filter(models.Course.id==course_id).first()
+    students=[]
+    for student in s1.students:
+        students.append(student.name)
+    return students
+
+
+def remove_student_of_course(db: Session, student_id: int, course_id: int):
+    s1 = db.query(models.Student).filter(models.Student.id==student_id).first()
+    c1 = db.query(models.Course).filter(models.Course.id==course_id).first()
+    c1.students.remove(s1)
+    db.commit()
+
+def remove_course_of_student(db: Session, student_id: int, course_id: int):
+    s1 = db.query(models.Student).filter(models.Student.id==student_id).first()
+    c1 = db.query(models.Course).filter(models.Course.id==course_id).first()
+    s1.students.remove(c1)
     db.commit()
