@@ -23,6 +23,7 @@ uvicorn main:app --reload
 
 Then open postman and use below url with methodes are explained in below:
 
+![screencapture-127-0-0-1-8000-redoc-2024-05-27-22_46_34](https://github.com/javadnematollahi/pyDeploy/assets/86910174/66f46ea9-f0b7-431e-8f3a-7d2e04c9009d)
 
 
 
