@@ -7,8 +7,6 @@ class CourseBase(BaseModel):
 
 
 class Course(CourseBase):
-    id: int
-    owner_id: int
 
     class Config:
         from_attributes = True
@@ -22,9 +20,6 @@ class StudentBase(BaseModel):
 
 
 class Student(StudentBase):
-    id: int
-    is_active: bool
-    courses: list[Course] = []
 
     class Config:
         from_attributes = True

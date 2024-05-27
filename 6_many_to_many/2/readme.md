@@ -1,14 +1,8 @@
-## sqlalchemy
+## sqlalchemy(many to many)
 
 sqlalchemy is a useful package that able us to work with different databases and It makes us unnecessary to use MySQL language to connect to database.
 
-
-I use below link to learn how to use sqlalchemy:
-
-https://fastapi.tiangolo.com/tutorial/sql-databases/
-
-
-After I write my APIs with using fastapi, I mprovide a dockerfile to build a docker image for my code.
+After I write my APIs with using fastapi, I provide a dockerfile to build a docker image for my code.
 
 ## How to build docker file
 
@@ -41,4 +35,4 @@ For database on liara
 
 You can use my postgres database with below url:
 
-https://fastapi-deploy.liara.run/docs
+https://studentcourse.liara.run/redoc

@@ -25,9 +25,9 @@ def read_students(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)
 @app.post("/students", response_model=schemas.Student)
 def create_student(firstname: str = Form(), lastname: str = Form(), average: str = Form(), graduated: int = Form(), db: Session = Depends(get_db)):
     student= schemas.Student(id=0 , firstname=firstname, lastname=lastname, average=average, graduated=graduated)
-    db_student = crud.get_student(db, title=student.title)
+    db_student = crud.get_student(db, firstname=student.firstname)
     if db_student:
-        raise HTTPException(status_code=400, detail="title already registered")
+        raise HTTPException(status_code=400, detail="firstname already registered")
     return crud.create_student(db=db, student=student)
 
 
@@ -130,7 +130,7 @@ def delete_course_from_student(course_id: int,student_id: int, db: Session = Dep
     crud.remove_course_of_student(db, course_id=course_id, student_id=student_id)
     return f"{db_course.name} is removed from {db_student.firstname}"
 
-@app.post("/student_to_course/{student_id}-{course_id}", response_model=schemas.Student)
+@app.post("/student_to_course/{student_id}-{course_id}")
 def add_student_to_course(course_id: int,student_id: int, db: Session = Depends(get_db)):
     db_course = crud.get_course_by_id(db, course_id=course_id)
     if db_course is None:
@@ -141,7 +141,7 @@ def add_student_to_course(course_id: int,student_id: int, db: Session = Depends(
     crud.add_student_to_courses(db, course_id=course_id, student_id=student_id)
     return f"{db_student.firstname} is added to {db_course.name}"
 
-@app.post("/course_to_student/{course_id}-{student_id}", response_model=schemas.Student)
+@app.post("/course_to_student/{course_id}-{student_id}")
 def add_course_to_student(course_id: int,student_id: int, db: Session = Depends(get_db)):
     db_course = crud.get_course_by_id(db, course_id=course_id)
     if db_course is None:
@@ -150,4 +150,4 @@ def add_course_to_student(course_id: int,student_id: int, db: Session = Depends(
     if db_student is None:
         raise HTTPException(status_code=404, detail="Student not found")
     crud.add_course_to_student(db, course_id=course_id, student_id=student_id)
-    return f"{db_student.firstname} is added to {db_course.name}"
+    return f"{db_course.name} is added to {db_student.firstname}"

@@ -92,7 +92,7 @@ def get_students_of_course(db: Session, course_id: int):
     s1 = db.query(models.Course).filter(models.Course.id==course_id).first()
     students=[]
     for student in s1.students:
-        students.append(student.name)
+        students.append(f"{student.firstname}-{student.lastname}")
     return students
 
 
@@ -105,5 +105,5 @@ def remove_student_of_course(db: Session, student_id: int, course_id: int):
 def remove_course_of_student(db: Session, student_id: int, course_id: int):
     s1 = db.query(models.Student).filter(models.Student.id==student_id).first()
     c1 = db.query(models.Course).filter(models.Course.id==course_id).first()
-    s1.students.remove(c1)
+    s1.courses.remove(c1)
     db.commit()
