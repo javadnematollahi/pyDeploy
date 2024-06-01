@@ -55,8 +55,11 @@ if st.button("Check Data", type="primary"):
             ),
             yaxis=dict(title="dataframe values")
             )
+
         fig = go.Figure(data = trace1 , layout=layout)
-        fig.show()
+        # fig.show()
+
+        st.plotly_chart(fig, use_container_width=True)
 
 
 else:
