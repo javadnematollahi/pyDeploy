@@ -23,7 +23,7 @@ In assignment2 I write a code that enable you to see your csv file as a table an
 
 you can access it with below link:
 
-https://stcounter.liara.run
+https://pydeploy-k5c5yy5aanuyhrbvmupr5f.streamlit.app/
 
 
 
