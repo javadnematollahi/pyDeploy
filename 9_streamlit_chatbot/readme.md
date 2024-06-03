@@ -8,4 +8,4 @@ I made a chatbot with streamlit with below features:
 
 There is a link below that you can access to chatbot with it.
 
-pydeploy-ard4d86aofof3cgfpq3wp4.streamlit.app
+https://pydeploy-ard4d86aofof3cgfpq3wp4.streamlit.app/
